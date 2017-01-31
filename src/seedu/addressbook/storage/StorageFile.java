@@ -104,7 +104,7 @@ public class StorageFile {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(toSave, fileWriter);
         } catch (FileNotFoundException fnfe) {
-            throw new FileNotFoundException("Error finding file");
+            throw new FileNotFoundException("Error finding file at " + path);
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
         } catch (JAXBException jaxbe) {
@@ -134,9 +134,11 @@ public class StorageFile {
          * situation (i.e. not truly exceptional) we should not use an exception to handle it.
          */
 
-        // file not found
+        // create empty file if not found
         } catch (FileNotFoundException fnfe) {
-            throw new FileNotFoundException("Error finding file");
+            final AddressBook empty = new AddressBook();
+            save(empty);
+            return empty;
 
         // other errors
         } catch (IOException ioe) {
@@ -146,6 +148,15 @@ public class StorageFile {
         } catch (IllegalValueException ive) {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
+    }
+    
+    public boolean hasStorageFile() throws FileNotFoundException{
+    	// throw exception when there is no storage file
+    	boolean hasExistingStorageFile = path.toFile().exists();
+    	if (!hasExistingStorageFile) {
+    		throw new FileNotFoundException("Error finding file");
+    	}
+    	return hasExistingStorageFile;
     }
 
     public String getPath() {
