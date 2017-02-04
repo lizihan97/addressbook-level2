@@ -149,15 +149,6 @@ public class StorageFile {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
     }
-    
-    public boolean hasStorageFile() throws FileNotFoundException{
-    	// throw exception when there is no storage file
-    	boolean hasExistingStorageFile = path.toFile().exists();
-    	if (!hasExistingStorageFile) {
-    		throw new FileNotFoundException("Error finding file");
-    	}
-    	return hasExistingStorageFile;
-    }
 
     public String getPath() {
         return path.toString();
