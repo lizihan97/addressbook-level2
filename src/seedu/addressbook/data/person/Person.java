@@ -1,7 +1,12 @@
 package seedu.addressbook.data.person;
 
+import seedu.addressbook.data.tag.Tag;
+import seedu.addressbook.data.tag.Tagging;
+import seedu.addressbook.data.tag.TaggingList;
 import seedu.addressbook.data.tag.UniqueTagList;
+import seedu.addressbook.data.tag.UniqueTagList.DuplicateTagException;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -10,10 +15,13 @@ import java.util.Objects;
  */
 public class Person implements ReadOnlyPerson {
 
-    private Name name;
+    private static final String ADD_TAGGING = "+";
+	private static final String DELETE_TAGGING = "-";
+	private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    public TaggingList taggingList;
 
     private final UniqueTagList tags;
     /**
@@ -64,6 +72,16 @@ public class Person implements ReadOnlyPerson {
      */
     public void setTags(UniqueTagList replacement) {
         tags.setTags(replacement);
+    }
+    
+    public void addTag(Tag tag) {
+    	Tagging newtagging = new Tagging(tag, this, ADD_TAGGING);
+    	taggingList.addTagging(newtagging);
+    }
+    
+    public void deleteTag(Tag tag) {
+    	Tagging newtagging = new Tagging(tag, this, DELETE_TAGGING);
+    	taggingList.deleteTagging(newtagging);
     }
 
     @Override
