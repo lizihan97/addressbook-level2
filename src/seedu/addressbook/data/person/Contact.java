@@ -7,7 +7,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
  * Guarantees: immutable; is valid as declared in {@link #isValidContact(String)}
  */
 public class Contact {
-	public static String EXAMPLE;
+    public static String EXAMPLE;
     public static String MESSAGE_CONTACT_CONSTRAINTS;
     public static String CONTACT_VALIDATION_REGEX;
 
