@@ -12,6 +12,7 @@ public class Phone implements Printable {
     public static final String MESSAGE_PHONE_CONSTRAINTS = "Person phone numbers should only contain numbers";
     public static final String PHONE_VALIDATION_REGEX = "\\d+";
     public static final String PHONE_PREFIX = "Phone: ";
+    public static final String PHONE_NOT_PRINTABLE = "The phone is not printable.";
 
     public final String value;
     private boolean isPrivate;
@@ -60,6 +61,10 @@ public class Phone implements Printable {
     
     @Override
     public String getPrintableString() {
-    	return PHONE_PREFIX + this.toString();
+    	if (isPrivate) {
+    		return PHONE_PREFIX + this.toString();
+    	} else {
+    		return PHONE_NOT_PRINTABLE;
+    	}
     }
 }
