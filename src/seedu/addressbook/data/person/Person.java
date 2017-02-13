@@ -73,16 +73,6 @@ public class Person implements ReadOnlyPerson {
     public void setTags(UniqueTagList replacement) {
         tags.setTags(replacement);
     }
-    
-    public void addTag(Tag tag) {
-    	Tagging newtagging = new Tagging(tag, this, ADD_TAGGING);
-    	taggingList.addTagging(newtagging);
-    }
-    
-    public void deleteTag(Tag tag) {
-    	Tagging newtagging = new Tagging(tag, this, DELETE_TAGGING);
-    	taggingList.deleteTagging(newtagging);
-    }
 
     @Override
     public boolean equals(Object other) {

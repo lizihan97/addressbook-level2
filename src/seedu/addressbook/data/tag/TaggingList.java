@@ -6,11 +6,11 @@ import java.util.List;
 public class TaggingList {
 	private final List<Tagging> taggingList = new ArrayList<>();
 	
-    public void addTagging(Tagging tagging){
+    public void add(Tagging tagging){
     	taggingList.add(tagging);
     }
     
-    public void deleteTagging(Tagging tagging){
+    public void delete(Tagging tagging){
     	taggingList.add(tagging);
     }
 }
