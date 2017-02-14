@@ -1,12 +1,8 @@
 package seedu.addressbook.data.person;
 
-import seedu.addressbook.data.tag.Tag;
-import seedu.addressbook.data.tag.Tagging;
 import seedu.addressbook.data.tag.TaggingList;
 import seedu.addressbook.data.tag.UniqueTagList;
-import seedu.addressbook.data.tag.UniqueTagList.DuplicateTagException;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,8 +11,6 @@ import java.util.Objects;
  */
 public class Person implements ReadOnlyPerson {
 
-    private static final String ADD_TAGGING = "+";
-	private static final String DELETE_TAGGING = "-";
 	private Name name;
     private Phone phone;
     private Email email;
